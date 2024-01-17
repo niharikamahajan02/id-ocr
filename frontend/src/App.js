@@ -29,7 +29,7 @@ const App = () => {
 
   const handleUpdate = async () => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/${identificationNumber}`, updateData);
+      const response = await axios.put(`https://thai-id-3q98.onrender.com/api/${identificationNumber}`, updateData);
       const updatedUser = response.data.data;
   
       // Update the userData array with the new data
@@ -53,7 +53,7 @@ const App = () => {
     formData.append('file', image);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/upload', formData);
+      const response = await axios.post('https://thai-id-3q98.onrender.com/api/upload', formData);
       setOCRData(response.data.data);
 
       // Assuming response.data.data contains the identification_number
@@ -66,7 +66,7 @@ const App = () => {
 
   const getUserById = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/${identificationNumber}`);
+      const response = await axios.get(`https://thai-id-3q98.onrender.com/api/${identificationNumber}`);
       setUserData([response.data.data]);
     } catch (error) {
       console.error('Error getting user by ID:', error);
@@ -75,7 +75,7 @@ const App = () => {
 
   const getAllUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/');
+      const response = await axios.get('https://thai-id-3q98.onrender.com/api/');
       setUserData(response.data.data);
     } catch (error) {
       console.error('Error getting all users:', error);
@@ -84,7 +84,7 @@ const App = () => {
 
   const deleteUserById = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/${identificationNumber}`);
+      await axios.delete(`https://thai-id-3q98.onrender.com/api/${identificationNumber}`);
       // Filter out the deleted user from the existing userData state
       setUserData((prevData) => prevData.filter((user) => user.identification_number !== identificationNumber));
     } catch (error) {
@@ -100,7 +100,7 @@ const App = () => {
     };
 
     try {
-      const response = await axios.put(`http://localhost:5000/api/${identificationNumber}`, updatedData);
+      const response = await axios.put(`https://thai-id-3q98.onrender.com/api/${identificationNumber}`, updatedData);
       setUserData([response.data.data]);
     } catch (error) {
       console.error('Error updating user data:', error);
